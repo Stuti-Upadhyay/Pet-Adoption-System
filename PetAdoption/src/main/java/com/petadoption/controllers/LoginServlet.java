@@ -32,44 +32,49 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
+	        throws ServletException, IOException {
 
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
+	    String email = request.getParameter("email");
+	    String password = request.getParameter("password");
 
-		if(email == null || email.isEmpty() || password == null || password.isEmpty()) {
-			request.setAttribute("error", "All fields are required!");
-			request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
-			return;
-		}
+	    // 1. Check if fields are empty
+	    if(email == null || email.isEmpty() || password == null || password.isEmpty()) {
+	        request.setAttribute("error", "All fields are required!");
+	        request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
+	        return;
+	    }
 
-		try {
-			Connection conn = DBConfig.getConnection();
+	    try {
+	        Connection conn = DBConfig.getConnection();
 
-			String sql = "SELECT * FROM users WHERE email=? AND password=?";
-			PreparedStatement ps = conn.prepareStatement(sql);
+	        // 2. Check if email exists
+	        String sqlEmail = "SELECT * FROM users WHERE email=?";
+	        PreparedStatement psEmail = conn.prepareStatement(sqlEmail);
+	        psEmail.setString(1, email);
+	        ResultSet rsEmail = psEmail.executeQuery();
 
-			ps.setString(1, email);
-			ps.setString(2, password);
+	        if(!rsEmail.next()) {
+	            request.setAttribute("error", "Email does not exist");
+	            request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
+	            return;
+	        }
 
-			ResultSet rs = ps.executeQuery();
+	        // 3. Check if password matches
+	        String dbPassword = rsEmail.getString("password");
+	        if(!dbPassword.equals(password)) {
+	            request.setAttribute("error", "Password is incorrect");
+	            request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
+	            return;
+	        }
 
-			if(rs.next()) {
+	        // 4. Successful login
+	        HttpSession session = request.getSession();
+	        session.setAttribute("user", email);
+	        response.sendRedirect(request.getContextPath() + "/home");
 
-				HttpSession session = request.getSession();
-				session.setAttribute("user", rs.getString("email"));
-
-				response.sendRedirect("home");
-
-			} else {
-				request.setAttribute("error", "Invalid credentials");
-				request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			request.setAttribute("error", "Something went wrong");
-			request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
-		}
-	}
-}
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        request.setAttribute("error", "Something went wrong");
+	        request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
+	    }
+	} }

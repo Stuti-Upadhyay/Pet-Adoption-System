@@ -1,74 +1,168 @@
-/* BASE */
-body {
+/* Reset & base */
+* {
+    box-sizing: border-box;
     margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: #fdfaf7;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    background-color: #f8f6f4;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Container split */
+.container {
     display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
 }
 
-/* CARD */
-.auth-container {
-    background: white;
-    padding: 40px 30px;
-    border-radius: 18px;
-    width: 350px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+/* Left image side */
+.image-side {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
 }
 
-/* TITLE */
-.auth-container h2 {
+.image-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* Right form side */
+.form-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+
+.login-box {
+    width: 90%;
+    max-width: 400px;
+}
+
+.login-box h1 {
+    font-family: 'Playfair Display', serif;
+    color: #9f402d;
+    font-size: 28px;
+    font-weight: 700;
     margin-bottom: 10px;
 }
 
-/* IMAGE */
-.auth-container img {
-    margin: 10px 0 20px;
+.login-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    margin-bottom: 8px;
 }
 
-/* INPUTS */
-.auth-container input {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-    border-radius: 10px;
-    border: 1px solid #eee;
-    background: #fafafa;
-}
-
-/* BUTTON */
-.auth-container button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 10px;
-    background: #f4b6b6;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.auth-container button:hover {
-    background: #e89b9b;
-}
-
-/* ERROR */
-.error-msg {
-    color: red;
-    margin-top: 10px;
+.login-box p {
     font-size: 14px;
+    margin-bottom: 20px;
+    color: #555;
 }
 
-/* LINK */
-.auth-container a {
-    color: #f4b6b6;
-    text-decoration: none;
+.login-box form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    margin-top: 12px;
 }
 
-.auth-container a:hover {
-    text-decoration: underline;
+/* Apply styling to all text, email, password inputs */
+.login-box form input[type="text"],
+.login-box form input[type="email"],
+.login-box form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    margin-bottom: 12px;
+    font-family: 'Inter', sans-serif;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    margin-bottom: 16px;
+    font-family: 'Inter', sans-serif;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #9f402d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 12px;
+    font-family: 'Inter', sans-serif;
+}
+
+button[type="submit"]:hover {
+    background-color: #802918;
+}
+
+.or {
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    margin: 12px 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.social-login {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.social-login button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+}
+
+.social-login .google {
+    background-color: #fff;
+}
+
+.social-login .apple {
+    background-color: #000;
+    color: white;
+}
+
+.signup-link {
+    text-align: center;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+}
+
+.signup-link a {
+    color: #9f402d;
+    font-weight: 600;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
 }
