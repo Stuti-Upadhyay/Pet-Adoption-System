@@ -1,0 +1,333 @@
+/* ================== GLOBAL VARIABLES & RESETS ================== */
+:root {
+    --bg-main: #f8f9fa;
+    --bg-card: #ffffff;
+    --border-color: #e9ecef;
+    --text-main: #212529;
+    --text-muted: #6c757d;
+    
+    /* Premium Earthy Theme */
+    --primary: #496d52;
+    --primary-hover: #3f6048;
+    --primary-light: #eef4ec;
+    
+    --radius-lg: 20px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.5;
+}
+
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: inherit; }
+
+/* ================== HEADER / NAVBAR ================== */
+.header {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    padding: 16px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: -0.5px;
+}
+
+.header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+}
+
+.header nav a {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+}
+
+.header nav a:hover, 
+.header nav a.active {
+    color: var(--primary);
+}
+
+.nav-user {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.profile-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-light);
+}
+
+.logout-btn {
+    font-size: 14px;
+    font-weight: 700;
+    color: #dc3545;
+    padding: 8px 16px;
+    background: #fff0ef;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+    background: #ffe2df;
+}
+
+/* ================== SEARCH & FILTERS CONTROLS ================== */
+.filters {
+    max-width: 1100px;
+    margin: 40px auto 24px auto;
+    padding: 0 20px;
+    display: flex;
+    gap: 16px;
+}
+
+.filters input[type="text"],
+.filters select {
+    padding: 12px 18px;
+    border-radius: var(--radius-md);
+    border: 1px solid #ced4da;
+    background: var(--bg-card);
+    font-size: 14px;
+    color: var(--text-main);
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.filters input[type="text"] {
+    flex: 1; /* Makes the search bar take up remaining spaces */
+}
+
+.filters select {
+    min-width: 160px;
+}
+
+.filters input:focus,
+.filters select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(73, 109, 82, 0.12);
+}
+
+.apply-filters {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 14px;
+    transition: background 0.2s ease;
+}
+
+.apply-filters:hover {
+    background: var(--primary-hover);
+}
+
+/* ================== PETS GRID CONTAINER ================== */
+.pets-section {
+    max-width: 1100px;
+    margin: 0 auto 60px auto;
+    padding: 0 20px;
+}
+
+.pet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 28px;
+}
+
+/* ================== PET INDIVIDUAL CARDS ================== */
+.pet-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.pet-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+}
+
+.pet-image-wrap {
+    position: relative;
+    height: 200px;
+    background: #e9ecef;
+}
+
+/* Fallback background block until images are integrated */
+.pet-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+}
+
+.pet-type-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(4px);
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.pet-heart {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--text-muted);
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+}
+.pet-heart:hover { transform: scale(1.1); }
+.pet-heart.liked { color: #e63946; }
+
+.pet-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.pet-info h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.pet-chips {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.chip {
+    background: var(--primary-light);
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 6px;
+}
+
+.pet-location {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.pet-location::before {
+    content: "📍";
+    font-size: 12px;
+}
+
+.adopt-btn {
+    width: 100%;
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 0;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+    margin-top: auto; /* Pushes button cleanly to bottom of card */
+    transition: background 0.2s ease;
+}
+
+.adopt-btn:hover {
+    background: var(--primary-hover);
+}
+
+/* ================== FOOTER ================== */
+.footer {
+    background: #1e2521;
+    color: #ced4da;
+    padding: 60px 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-column h3, 
+.footer-column h4 {
+    color: white;
+    margin-bottom: 16px;
+}
+
+.footer-column h3 { font-size: 20px; font-weight: 800; }
+.footer-column h4 { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;}
+
+.footer-column ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-column a {
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+.footer-column a:hover { color: var(--primary-light); }
+.footer-column p { font-size: 14px; margin-bottom: 6px; }
+
+/* ================== RESPONSIVE MEDIA QUERIES ================== */
+@media (max-width: 768px) {
+    .header { padding: 16px 20px; }
+    .header nav { display: none; } /* Standard collapse behavior for mobile devices */
+    .filters { flex-direction: column; }
+    .pet-grid { grid-template-columns: 1fr; }
+}

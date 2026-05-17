@@ -16,7 +16,7 @@
     <nav>
         <ul>
             <li><a href="#" class="active">Home</a></li>
-            <li><a href="#">Browse</a></li>
+            <li><a href="${pageContext.request.contextPath}/browse">Browse</a></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Contact</a></li>
             

@@ -7,6 +7,7 @@ public class User {
     private String email;
     private String phone;
     private String password;
+    private String role;       // ← ADDED
 
     // Default constructor
     public User() {}
@@ -17,9 +18,10 @@ public class User {
         this.email = email;
         this.phone = phone;
         this.password = password;
+        this.role = role;      // ← ADDED
     }
 
-    //  Getters and Setters
+    // Getters and Setters
 
     public int getId() {
         return id;
@@ -59,5 +61,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    // ← ADDED
+    public String getRole() {
+        return role != null ? role : "user";
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

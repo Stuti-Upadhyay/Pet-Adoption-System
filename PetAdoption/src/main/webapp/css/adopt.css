@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    background: #f5f4ef;
+    color: #111827;
+}
+
+.adopt-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 55px 20px;
+}
+
+.adopt-card {
+    width: 100%;
+    max-width: 760px;
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 44px 48px 36px;
+    box-shadow: 0 18px 45px rgba(35, 50, 40, 0.08);
+}
+
+.adopt-card h2 {
+    margin: 0 0 34px;
+    font-size: 30px;
+    font-weight: 700;
+    color: #18251d;
+    text-align: center;
+    letter-spacing: -0.4px;
+}
+
+.form-section {
+    margin-bottom: 34px;
+}
+
+.form-section h3 {
+    position: relative;
+    margin: 0 0 25px;
+    padding-bottom: 17px;
+    font-size: 23px;
+    font-weight: 600;
+    color: #101810;
+    border-bottom: 1px solid #dfe4dc;
+    letter-spacing: -0.3px;
+}
+
+.form-section h3::before {
+    content: "";
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    margin-right: 12px;
+    vertical-align: -2px;
+    border: 2px solid #496d52;
+    border-radius: 5px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1f2a24;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    border: 1.5px solid #d3d8d1;
+    background: #f7f7f4;
+    border-radius: 11px;
+    padding: 15px 16px;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #1f2933;
+    outline: none;
+    transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input {
+    height: 54px;
+}
+
+.form-group textarea {
+    min-height: 175px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #8b948b;
+    font-weight: 400;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #496d52;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(73, 109, 82, 0.11);
+}
+
+.ready-box {
+    position: relative;
+    margin: 4px 0 42px;
+    padding: 18px 20px 18px 56px;
+    background: #e9f0e8;
+    border: 1px solid #d8e4d7;
+    border-radius: 11px;
+    color: #243d2c;
+}
+
+.ready-box::before {
+    content: "✓";
+    position: absolute;
+    left: 20px;
+    top: 18px;
+    width: 21px;
+    height: 21px;
+    border: 2px solid #496d52;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: #496d52;
+}
+
+.ready-box strong {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.ready-box p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: #314a38;
+}
+
+.submit-btn {
+    width: 100%;
+    height: 66px;
+    border: none;
+    border-radius: 999px;
+    background: #496d52;
+    color: #ffffff;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 14px 28px rgba(48, 76, 57, 0.28);
+    transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.submit-btn:hover {
+    background: #3f6048;
+    transform: translateY(-2px);
+    box-shadow: 0 18px 32px rgba(48, 76, 57, 0.32);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 10px 20px rgba(48, 76, 57, 0.22);
+}
+
+.terms-text {
+    margin: 16px 0 0;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 400;
+    color: #2f3a33;
+}
+
+.success-box {
+    margin-bottom: 26px;
+    padding: 15px 18px;
+    background: #e9f0e8;
+    border: 1px solid #cbdcca;
+    border-radius: 11px;
+    color: #243d2c;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.pet-info-box {
+    margin-bottom: 28px;
+    padding: 16px 18px;
+    background: #f7f7f4;
+    border: 1px solid #dfe4dc;
+    border-radius: 13px;
+    color: #243d2c;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+@media (max-width: 720px) {
+    .adopt-wrapper {
+        padding: 28px 14px;
+    }
+
+    .adopt-card {
+        padding: 30px 22px 28px;
+        border-radius: 18px;
+    }
+
+    .adopt-card h2 {
+        font-size: 25px;
+        margin-bottom: 28px;
+    }
+
+    .form-section h3 {
+        font-size: 21px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .submit-btn {
+        height: 58px;
+        font-size: 18px;
+    }
+}
+
